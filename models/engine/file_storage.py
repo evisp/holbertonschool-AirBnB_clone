@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" FileStorage class 
+""" FileStorage class
 """
 import json
 from models.base_model import BaseModel
@@ -34,7 +34,7 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        """ all method that returns the dictionary __objects 
+        """ all method that returns the dictionary __objects
         """
         return FileStorage.__objects
 
@@ -52,7 +52,7 @@ class FileStorage:
 
     def save(self):
         """ save method serializes __objects to the JSON file
-        (path: __file_path) 
+        (path: __file_path)
         """
         with open(FileStorage.__file_path, encoding='utf-8', mode='w') as file:
             new_d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
@@ -62,7 +62,7 @@ class FileStorage:
         """ deserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists;
         otherwise, do nothing. If the file doesnt exist,
-        no exception should be raised) 
+        no exception should be raised)
         """
         try:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
