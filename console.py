@@ -103,16 +103,16 @@ class HBNBCommand(cmd.Cmd):
         """
         prints all string representation
         """
-        tokens = arg.split()
+        #tokens = arg.split()
         all_objs = storage.all()
         objs_list = []
 
-        if len(tokens) == 0:
+        if len(arg) == 0:
             for value in all_objs.values():
                 objs_list.append(str(value))
-        elif tokens[0] in HBNBCommand.air_classes:
+        elif arg in HBNBCommand.air_classes:
             for key, value in all_objs.items():
-                if tokens[0] in key:
+                if arg in key:
                     objs_list.append(str(value))
         else:
             print("** class doesn't exist **")
