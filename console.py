@@ -135,18 +135,20 @@ class HBNBCommand(cmd.Cmd):
         """
         Is a command to update
         """
+        tokens = line.split(" ")
+        
         if line is None or line == "":
             print("** class name missing **")
-        elif line.split(" ")[0] not in HBNBCommand.air_classes:
+        elif tokens[0] not in HBNBCommand.air_classes:
             print("** class doesn't exist **")
-        elif len(line.split(" ")) < 2:
+        elif len(tokens) < 2:
             print("** instance id missing **")
-        elif len(line.split(" ")) < 3:
+        elif len(tokens) < 3:
             print("** attribute name missing **")
-        elif len(line.split(" ")) < 4:
+        elif len(tokens) < 4:
             print("** value missing **")
         else:
-            key = "{}.{}".format(line.split(" ")[0], line.split(" ")[1])
+            key = tokens[0] + "." + tokens[1]
             if key not in storage.all():
                 print("** no instance found **")
             else:
