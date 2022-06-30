@@ -152,9 +152,9 @@ class HBNBCommand(cmd.Cmd):
             if key not in storage.all():
                 print("** no instance found **")
             else:
-                obj_upt = line.split()[2]
-                value = line.split()[3]
-                setattr(storage.all()[key], obj_upt, value)
+                obj_property = tokens[2]
+                obj_value = tokens[3]
+                setattr(storage.all()[key], obj_property, obj_value)
                 storage.save()
 
     def do_count(self, args):
