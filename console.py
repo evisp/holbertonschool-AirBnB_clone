@@ -54,7 +54,8 @@ class HBNBCommand(cmd.Cmd):
         elif line not in HBNBCommand.air_classes:
             print("** class doesn't exist **")
         else:
-            instance = HBNBCommand.air_classes[line]()
+            air_bnb_class = HBNBCommand.air_classes[line]
+            instance = air_bnb_class()
             instance.save()
             print(instance.id)
             storage.save()
@@ -103,6 +104,7 @@ class HBNBCommand(cmd.Cmd):
         prints all string representation
         """
 
+        """
         if not arg:
             print("** class name missing **")
             return
@@ -123,8 +125,6 @@ class HBNBCommand(cmd.Cmd):
         """
         if not arg:
             new_list = [str(value) for key, value in storage.all().items()]
-            if len(new_list) != 0:
-                print(new_list)
         elif arg not in self.air_classes:
             print("** class doesn't exist **")
             return
@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
                         value in storage.all().items() if arg in key]
             if len(new_list) != 0:
                 print(new_list)
-        """
+        
     def do_update(self, line):
         """
         Is a command to update
