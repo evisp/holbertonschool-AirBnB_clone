@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
         """
         prints all string representation
         """
-
+"""
         if not arg:
             print("** class name missing **")
             return
@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
                         value in storage.all().items() if arg in key]
             if len(new_list) != 0:
                 print(new_list)
-        """        
+                
     def do_update(self, line):
         """
         Is a command to update
