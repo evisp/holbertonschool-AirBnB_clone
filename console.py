@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
                 if obj_name == tokens[0]:
                     objs_list.extend(value.__str__())
             print(obj_list)
-                               """
+        """
         if not arg:
             new_list = [str(value) for key, value in storage.all().items()]
             if len(new_list) != 0:
