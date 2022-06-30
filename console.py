@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
             for key, value in all_objs.items():
                 obj_name = value.__class__.__name__
                 if obj_name == tokens[0]:
-                    objs_list.extend(value.__str__())
+                    objs_list += [value.__str__()]
             print(objs_list)
         """
         if not arg:
