@@ -63,20 +63,18 @@ class HBNBCommand(cmd.Cmd):
         """
         String representation of a id instance
         """
-        tokens = line.split(" ")
         if line is None or line == "":
             print("** class name missing **")
-        elif tokens[0] not in HBNBCommand.air_classes:
+        elif line.split(" ")[0] not in HBNBCommand.air_classes:
             print("** class doesn't exist **")
-        elif len(tokens) < 2:
+        elif len(line.split(" ")) < 2:
             print("** instance id missing **")
         else:
-            key = tokens[0] + "." + tokens[1]
-            objs_dict = storage.all()
-            if key not in objs_dict:
+            key = "{}.{}".format(line.split(" ")[0], line.split(" ")[1])
+            if key not in storage.all():
                 print("** no instance found **")
             else:
-                print(objs_dict[key])
+                print(storage.all()[key])
 
     def do_destroy(self, line):
         """
