@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
             if key not in objs_dict:
                 print("** no instance found **")
             else:
-                del objc_dict[key]
+                del objs_dict[key]
                 storage.save()
 
     def do_all(self, arg):
