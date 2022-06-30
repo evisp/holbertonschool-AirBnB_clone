@@ -82,18 +82,20 @@ class HBNBCommand(cmd.Cmd):
         """
         Is a command to destroy a instance
         """
+        tokens = line.split(" ")
         if line is None or line == "":
             print("** class name missing **")
-        elif line.split(" ")[0] not in HBNBCommand.air_classes:
+        elif tokens[0] not in HBNBCommand.air_classes:
             print("** class doesn't exist **")
-        elif len(line.split(" ")) < 2:
+        elif len(tokens) < 2:
             print("** instance id missing **")
         else:
-            key = "{}.{}".format(line.split(" ")[0], line.split(" ")[1])
-            if key not in storage.all():
+            key = tokens[0] + "." + tokens[1]
+            objs_dict = storage.all()
+            if key not in objs_dict:
                 print("** no instance found **")
             else:
-                del storage.all()[key]
+                del objc_dict[key]
                 storage.save()
 
     def do_all(self, arg):
