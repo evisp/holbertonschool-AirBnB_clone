@@ -103,24 +103,22 @@ class HBNBCommand(cmd.Cmd):
         """
         prints all string representation
         """
-"""
-        if not arg:
-            print("** class name missing **")
-            return
-
         tokens = arg.split()
+        all_objs = storage.all()
+        objs_list = []
 
-        if tokens[0] not in HBNBCommand.air_classes:
-            print("** class doesn't exist **")
-        else:
-            all_objs = storage.all()
-            objs_list = []
-
+        if len(tokens) == 0:
+            for value in all_objs.values():
+                objs_list.append(str(value))
+        elif tokens[0] in HBNBCommand.air_classes:
             for key, value in all_objs.items():
-                obj_name = value.__class__.__name__
-                if obj_name == tokens[0]:
-                    objs_list += [value.__str__()]
-            print(objs_list)
+                if tokens[0] in key:
+                    objs_list.append(str(value))
+        else:
+            print("** class doesn't exist **")
+            return False
+
+        print(objs_list)
         """
         if not arg:
             new_list = [str(value) for key, value in storage.all().items()]
@@ -132,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
                         value in storage.all().items() if arg in key]
             if len(new_list) != 0:
                 print(new_list)
-                
+        """                
     def do_update(self, line):
         """
         Is a command to update
